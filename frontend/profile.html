@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile - Student Internship Portal</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+
+            <a class="navbar-brand" href="dashboard.html">
+                Student Internship Portal
+            </a>
+
+            <div>
+                <a href="dashboard.html"
+                   class="btn btn-light btn-sm me-2">
+                    Dashboard
+                </a>
+
+                <button
+                    class="btn btn-outline-light btn-sm"
+                    onclick="logout()">
+                    Logout
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- Profile Section -->
+    <div class="container py-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="card shadow-sm">
+
+                    <div class="card-body p-4 p-md-5">
+
+                        <div class="text-center mb-4">
+
+                            <h2 class="text-primary">
+                                My Profile
+                            </h2>
+
+                            <p class="text-muted">
+                                View and update your student information
+                            </p>
+
+                        </div>
+
+
+                        <!-- Message -->
+                        <div id="message"></div>
+
+
+                        <!-- Profile Form -->
+                        <form id="profileForm">
+
+                            <div class="row">
+
+                                <!-- Name -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label
+                                        for="name"
+                                        class="form-label">
+                                        Full Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        class="form-control"
+                                        required>
+
+                                </div>
+
+
+                                <!-- Department -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label
+                                        for="department"
+                                        class="form-label">
+                                        Department
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="department"
+                                        class="form-control"
+                                        required>
+
+                                </div>
+
+
+                                <!-- Year -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label
+                                        for="year"
+                                        class="form-label">
+                                        Year
+                                    </label>
+
+                                    <select
+                                        id="year"
+                                        class="form-select"
+                                        required>
+
+                                        <option value="">
+                                            Select Year
+                                        </option>
+
+                                        <option value="1">
+                                            1st Year
+                                        </option>
+
+                                        <option value="2">
+                                            2nd Year
+                                        </option>
+
+                                        <option value="3">
+                                            3rd Year
+                                        </option>
+
+                                        <option value="4">
+                                            4th Year
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Email -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label
+                                        for="email"
+                                        class="form-label">
+                                        Email
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        class="form-control"
+                                        required>
+
+                                </div>
+
+
+                                <!-- Skills -->
+                                <div class="col-12 mb-4">
+
+                                    <label
+                                        for="skills"
+                                        class="form-label">
+                                        Skills
+                                    </label>
+
+                                    <textarea
+                                        id="skills"
+                                        class="form-control"
+                                        rows="3"
+                                        placeholder="Example: Java, HTML, CSS, JavaScript, React"
+                                        required></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Buttons -->
+                            <div class="d-flex justify-content-between">
+
+                                <a
+                                    href="dashboard.html"
+                                    class="btn btn-secondary">
+                                    Back to Dashboard
+                                </a>
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary">
+                                    Update Profile
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p class="mb-0">
+            Student Internship & Skill Development Portal
+        </p>
+
+        <small>
+            College Mini Project
+        </small>
+
+    </footer>
+
+
+    <script src="js/profile.js"></script>
+
+    <script>
+        function logout() {
+            localStorage.clear();
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+
+</html>

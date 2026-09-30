@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar navbar-dark bg-primary">
+
+        <div class="container">
+
+            <a
+                class="navbar-brand"
+                href="admin-dashboard.html">
+
+                Student Internship Portal - Admin
+
+            </a>
+
+            <button
+                onclick="logout()"
+                class="btn btn-danger">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= MAIN CONTAINER ================= -->
+
+    <div class="container mt-5">
+
+
+        <h2 class="text-center mb-4">
+            Admin Dashboard
+        </h2>
+
+
+
+        <!-- ================= DASHBOARD CARDS ================= -->
+
+        <div class="row">
+
+
+            <!-- Add Internship -->
+
+            <div class="col-md-3 mb-4">
+
+                <div class="card shadow h-100">
+
+                    <div class="card-body text-center">
+
+                        <h4>
+                            Add Internship
+                        </h4>
+
+                        <p>
+                            Add a new internship opportunity.
+                        </p>
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="showAddInternshipForm()">
+
+                            Add Internship
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Manage Internships -->
+
+            <div class="col-md-3 mb-4">
+
+                <div class="card shadow h-100">
+
+                    <div class="card-body text-center">
+
+                        <h4>
+                            Manage Internships
+                        </h4>
+
+                        <p>
+                            View, edit and delete internships.
+                        </p>
+
+                        <button
+                            class="btn btn-warning"
+                            onclick="loadInternships()">
+
+                            Manage Internships
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Students -->
+
+            <div class="col-md-3 mb-4">
+
+                <div class="card shadow h-100">
+
+                    <div class="card-body text-center">
+
+                        <h4>
+                            Students
+                        </h4>
+
+                        <p>
+                            View registered students.
+                        </p>
+
+                        <button
+                            class="btn btn-info"
+                            onclick="loadStudents()">
+
+                            View Students
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Applications -->
+
+            <div class="col-md-3 mb-4">
+
+                <div class="card shadow h-100">
+
+                    <div class="card-body text-center">
+
+                        <h4>
+                            Applications
+                        </h4>
+
+                        <p>
+                            View and manage student applications.
+                        </p>
+
+                        <button
+                            class="btn btn-success"
+                            onclick="loadApplications()">
+
+                            View Applications
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================= ADD INTERNSHIP FORM ================= -->
+
+        <div
+            id="addInternshipForm"
+            class="card shadow mt-4"
+            style="display: none;">
+
+            <div class="card-body">
+
+                <h3 class="mb-4">
+                    Add New Internship
+                </h3>
+
+                <form id="internshipForm">
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Company Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="companyName"
+                            class="form-control"
+                            required>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Internship Role
+                        </label>
+
+                        <input
+                            type="text"
+                            id="role"
+                            class="form-control"
+                            required>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Required Skills
+                        </label>
+
+                        <input
+                            type="text"
+                            id="requiredSkills"
+                            class="form-control"
+                            placeholder="Java, Spring Boot, MySQL"
+                            required>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Duration
+                        </label>
+
+                        <input
+                            type="text"
+                            id="duration"
+                            class="form-control"
+                            placeholder="3 Months"
+                            required>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            class="form-control"
+                            placeholder="Chennai"
+                            required>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Internship Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            class="form-control"
+                            rows="4"
+                            placeholder="Enter internship description"
+                            required></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+
+                        Add Internship
+
+                    </button>
+
+
+                </form>
+
+
+                <div
+                    id="result"
+                    class="mt-3">
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= INTERNSHIP LIST ================= -->
+
+        <div
+            id="internshipSection"
+            class="mt-5"
+            style="display: none;">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h3 class="mb-3">
+                        Internship Management
+                    </h3>
+
+                    <div id="internshipList">
+
+                        <!-- Internships will appear here -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= STUDENT LIST ================= -->
+
+        <div
+            id="studentSection"
+            class="mt-5"
+            style="display: none;">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h3 class="mb-3">
+                        Registered Students
+                    </h3>
+
+                    <div id="studentList">
+
+                        <!-- Students will appear here -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= APPLICATION LIST ================= -->
+
+        <div
+            id="applicationSection"
+            class="mt-5 mb-5"
+            style="display: none;">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h3 class="mb-3">
+                        Student Applications
+                    </h3>
+
+                    <div id="applicationList">
+
+                        <!-- Applications will appear here -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/admin-dashboard.js"></script>
+
+
+</body>
+
+</html>
